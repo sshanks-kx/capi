@@ -39,13 +39,16 @@ int main() {
   K response, table, tableName, columnNames, columnValues;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
   tableName= ks("trade");
   response= k(handle, ".u.sub", r1(tableName), ks(""), (K) 0);
   if(isRemoteErr(response)) {
     r0(tableName);
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
   r0(response);
@@ -73,5 +76,6 @@ int main() {
   }
   r0(tableName);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

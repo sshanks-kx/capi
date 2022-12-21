@@ -26,44 +26,43 @@ LDOPTS=-lpthread
 CRYPTOPTS=-lcrypto -lssl
 OBJ=$(OBJHOME)/c.o
 
-length:
+length: length.c
 	$(CC) $(OPTS) -o length length.c $(OBJ) $(LDOPTS)
-error:
+error: error.c
 	$(CC) $(OPTS) -o error error.c $(OBJ) $(LDOPTS)
-alivecheck:
+alivecheck: alivecheck.c
 	$(CC) $(OPTS) -o alivecheck alivecheck.c $(OBJ) $(LDOPTS)
-portopen:
+portopen: portopen.c
 	$(CC) $(OPTS) -o portopen portopen.c $(OBJ) $(LDOPTS)
-mixedList:
+mixedList: mixedList.c
 	$(CC) $(OPTS) -o mixedList mixedList.c $(OBJ) $(LDOPTS)
-schema:
+schema: schema.c
 	$(CC) $(OPTS) -o schema schema.c $(OBJ) $(LDOPTS)
-lists:
+lists: lists.c
 	$(CC) $(OPTS) -o lists lists.c $(OBJ) $(LDOPTS)
-dict:
+dict: dict.c
 	$(CC) $(OPTS) -o dict dict.c $(OBJ) $(LDOPTS)
-table:
+table: table.c
 	$(CC) $(OPTS) -o table table.c $(OBJ) $(LDOPTS)
-refcount:
+refcount: refcount.c
 	$(CC) $(OPTS) -o refcount refcount.c $(OBJ) $(LDOPTS)
-refcountk:
+refcountk: refcountk.c
 	$(CC) $(OPTS) -o refcountk refcountk.c $(OBJ) $(LDOPTS)
-subscriber:
+subscriber: subscriber.c
 	$(CC) $(OPTS) -o subscriber subscriber.c $(OBJ) $(LDOPTS)
-singleRow:
+singleRow: singleRow.c
 	$(CC) $(OPTS) -o singleRow singleRow.c $(OBJ) $(LDOPTS)
-multiRow:
+multiRow: multiRow.c
 	$(CC) $(OPTS) -o multiRow multiRow.c $(OBJ) $(LDOPTS)
-multiRowAsync:
+multiRowAsync: multiRowAsync.c
 	$(CC) $(OPTS) -o multiRowAsync multiRowAsync.c $(OBJ) $(LDOPTS)
-rowswithtime:
+rowswithtime: rowswithtime.c
 	$(CC) $(OPTS) -o rowswithtime rowswithtime.c $(OBJ) $(LDOPTS)
-guid:
+guid: guid.c
 	$(CC) $(OPTS) -o guid guid.c $(OBJ) $(LDOPTS)
-mathLib:
+mathLib: mathLib.c
 	$(CC) $(CFLAG) $(OPTS) -shared -fPIC -o mathLib.so mathLib.c $(LDOPTS)
-
-cryptoLib:
+cryptoLib: cryptoLib.c
 	$(CC) $(CFLAG) $(OPTS) -shared -fPIC -o cryptoLib.so cryptoLib.c $(LDOPTS) $(CRYPTOPTS)
 
 clean:

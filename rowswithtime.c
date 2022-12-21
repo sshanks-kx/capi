@@ -18,8 +18,10 @@ int main() {
   struct tm *ct;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   K multipleRow= knk(4, ktn(KN, n), ktn(KS, n), ktn(KF, n), ktn(KJ, n));
   time(&currentTime);
@@ -35,10 +37,12 @@ int main() {
   result= k(handle, ".u.upd", ks((S) "trade"), multipleRow, (K) 0);
   if(isRemoteErr(result)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
   r0(result);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

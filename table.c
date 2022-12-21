@@ -10,8 +10,10 @@ int main() {
   K table, columns, values, col1, col2;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9(); 
     return EXIT_FAILURE;
+  }
 
   // Execute a query which performs an aggregate on table t
   // Table t can be defined on the q process as follows
@@ -19,6 +21,7 @@ int main() {
   table= k(handle, "select from t where price=(max;price) fby sym", (K) 0);
   if(isRemoteErr(table)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -44,5 +47,6 @@ int main() {
 
   r0(table);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

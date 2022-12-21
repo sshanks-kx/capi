@@ -19,5 +19,7 @@ int main() {
   printf("value of a is still available: %d\n", a->i);
 
   r0(a); // When an object of ref count 0 passed to r0, the object is destroyed
+
+  m9(); // free memory pool
   return EXIT_SUCCESS;
 }

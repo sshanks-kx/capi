@@ -8,14 +8,17 @@ int main() {
   I handle;
 
   handle= khpun("localhost", port, "kdb:pass", timeout);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   result= k(handle, "1+`2", (K) 0);
   // Handle network error
   if(!result) {
     perror("Network Error\n");
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -29,6 +32,7 @@ int main() {
   if(!result) {
     perror("Network Error\n");
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
   if(-128 == result->t) {
@@ -41,6 +45,7 @@ int main() {
   if(!result) {
     perror("Network Error\n");
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
   if(-128 == result->t) {
@@ -49,5 +54,6 @@ int main() {
   r0(result);
 
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

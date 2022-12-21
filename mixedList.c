@@ -10,12 +10,15 @@ int main() {
   K mixedList, elementOne, elementTwo;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   mixedList= k(handle, "(1 2 3 4 5;20.0 30.0 40.0)", (K) 0);
   if(isRemoteErr(mixedList)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -38,5 +41,6 @@ int main() {
 
   r0(mixedList);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

@@ -9,12 +9,15 @@ int main() {
   K x;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   x= k(handle, "reverse `A`B`C", (K) 0);
   if(isRemoteErr(x)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -23,6 +26,7 @@ int main() {
   x= k(handle, "reverse 1 2 3", (K) 0);
   if(isRemoteErr(x)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -31,6 +35,7 @@ int main() {
   x= k(handle, "reverse 1.0 2.0 3.0", (K) 0);
   if(isRemoteErr(x)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -38,5 +43,6 @@ int main() {
   r0(x);
 
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

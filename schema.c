@@ -9,11 +9,14 @@ int main() {
   K response, table, columnNames;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
   response= k(handle, ".u.sub[`trade;`]", (K) 0);
   if(isRemoteErr(response)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
   // .u.sub returns a two element list
@@ -29,6 +32,7 @@ int main() {
             response->t);
     r0(response);
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
   printf("Number of elements returned is %lld\n", response->n);
@@ -44,5 +48,6 @@ int main() {
 
   r0(response);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

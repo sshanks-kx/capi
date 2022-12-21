@@ -11,8 +11,10 @@ int main() {
   K result;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   K multipleRow= knk(3, ktn(KS, n), ktn(KF, n), ktn(KJ, n));
   for(i= 0; i < n; i++) {
@@ -24,11 +26,14 @@ int main() {
   // Perform multiple row insert asynchronously, tickerplant will add timestamp
   // column itself
   result= k(-handle, ".u.upd", ks((S) "trade"), multipleRow, (K) 0);
-  if(isRemoteErr(result)) {
+  if(!result) {
+    fprintf(stderr, "Error - network error\n");
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

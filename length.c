@@ -9,12 +9,15 @@ int main() {
   K list;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   list= k(handle, "2*1 2 3f", (K) 0);
   if(isRemoteErr(list)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -22,5 +25,6 @@ int main() {
 
   r0(list);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

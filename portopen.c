@@ -8,11 +8,14 @@ int main() {
   S usernamePassword= "kdb:pass";
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   printf("Handle value is %d\n", handle);
 
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

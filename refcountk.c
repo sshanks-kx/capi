@@ -9,8 +9,10 @@ int main() {
   K response, a;
   // NOTE: connection must be opened before creating K objects
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   a= ki(5);
   printf("ref count of a is %d\n", a->r);
@@ -21,6 +23,7 @@ int main() {
 
   if(isRemoteErr(response)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -28,5 +31,6 @@ int main() {
 
   r0(response);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

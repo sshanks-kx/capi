@@ -10,12 +10,15 @@ int main() {
   K singleGuid, multiGuid;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   singleGuid= k(handle, "rand 0Ng", (K) 0);
   if(isRemoteErr(singleGuid)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -31,6 +34,7 @@ int main() {
   multiGuid= k(handle, "2?0Ng", (K) 0);
   if(isRemoteErr(multiGuid)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -45,5 +49,6 @@ int main() {
   }
   r0(multiGuid);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

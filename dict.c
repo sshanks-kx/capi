@@ -11,13 +11,16 @@ int main() {
 
   handle= khpu(hostname, portnumber, usernamePassword);
 
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   x= k(handle, "`a`b`c!((1;2;3);(10.0;20.0);(`AB`CD`EF`GH))", (K) 0);
 
   if(isRemoteErr(x)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
@@ -52,5 +55,6 @@ int main() {
 
   r0(x);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

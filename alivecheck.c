@@ -9,17 +9,21 @@ int main() {
   K result;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
   printf("Handle value is %d\n", handle);
   result= k(handle, "2.0+3.0", (K) 0);
   if(isRemoteErr(result)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
   printf("Value returned is %f\n", result->f);
 
   r0(result);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }

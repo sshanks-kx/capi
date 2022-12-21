@@ -9,18 +9,22 @@ int main() {
   K result, singleRow;
 
   handle= khpu(hostname, portnumber, usernamePassword);
-  if(!handleOk(handle))
+  if(!handleOk(handle)) {
+    m9();
     return EXIT_FAILURE;
+  }
 
   singleRow= knk(3, ks((S) "ABC"), kf(10.0), kj(20));
   // Perform single row insert, tickerplant will add timestamp column itself
   result= k(handle, ".u.upd", ks((S) "trade"), singleRow, (K) 0);
   if(isRemoteErr(result)) {
     kclose(handle);
+    m9();
     return EXIT_FAILURE;
   }
 
   r0(result);
   kclose(handle);
+  m9();
   return EXIT_SUCCESS;
 }
